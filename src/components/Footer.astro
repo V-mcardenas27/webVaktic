@@ -1,0 +1,44 @@
+---
+// src/components/Footer.astro
+const cols = [
+  { title:"Servicios", links:["Desarrollo Web","Inteligencia Artificial","Automatización","CRM a medida","Dashboards"] },
+  { title:"Soluciones", links:["Para Inmobiliarias","Para Comercios","Para Startups","Para Clínicas"] },
+  { title:"Empresa",  links:["Sobre Vaktic","Blog","Casos de éxito","Contacto"] },
+  { title:"Legal",    links:["Privacidad","Términos de uso","Cookies"] },
+];
+---
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <a href="#" class="brand">
+        <!-- <div class="brand__icon brand__icon--sm" aria-hidden="true">
+          <div class="layer layer--1"></div>
+          <div class="layer layer--2"></div>
+          <div class="layer layer--3"></div>
+        </div> -->
+        <span class="brand__name brand__name_">vaktic</span>
+      </a>
+      <p class="footer__tagline">Tecnología que hace crecer tu negocio.</p>
+      <div class="footer__social">
+        <a href="https://www.instagram.com/vaktic.oficial/" target="_blank" aria-label="Instagram"><i data-lucide="instagram"></i></a>
+        <a href="#" aria-label="LinkedIn"><i data-lucide="linkedin"></i></a>
+        <a href="#" aria-label="Twitter / X"><i data-lucide="twitter"></i></a>
+        <a href="#" aria-label="WhatsApp"><i data-lucide="message-circle"></i></a>
+      </div>
+    </div>
+
+    <nav class="footer__links">
+      {cols.map(col => (
+        <div class="footer__col">
+          <span class="footer__col-title">{col.title}</span>
+          {col.links.map(link => <a href="#">{link}</a>)}
+        </div>
+      ))}
+    </nav>
+  </div>
+
+  <div class="container footer__bottom">
+    <span>© 2025 Vaktic Technologies. Todos los derechos reservados.</span>
+  </div>
+</footer>

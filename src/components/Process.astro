@@ -1,0 +1,35 @@
+---
+// src/components/Process.astro
+const steps = [
+  { num:"01", icon:"message-circle", title:"Diagnóstico",       desc:"Entendemos tu negocio, tus dolores y objetivos. Sesión gratuita de 30 minutos donde identificamos exactamente qué necesitás." },
+  { num:"02", icon:"pencil-ruler",   title:"Propuesta exacta",  desc:"Presentamos alcance, tiempos y presupuesto precisos. Sin costos ocultos. Aprobás antes de que empecemos." },
+  { num:"03", icon:"code-2",         title:"Desarrollo ágil",   desc:"Construimos con actualizaciones semanales y acceso a un panel de seguimiento. Siempre en comunicación." },
+  { num:"04", icon:"rocket",         title:"Lanzamiento y soporte", desc:"Entregamos, capacitamos a tu equipo y nos quedamos disponibles. Nunca estás solo ante un problema técnico." },
+];
+---
+
+<section class="process" id="proceso">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Cómo trabajamos</span>
+      <h2 class="section-head__title" data-reveal>De la idea al producto<br />en 4 pasos claros.</h2>
+      <p class="section-head__sub" data-reveal>Sin burocracia ni sorpresas. Sabés exactamente qué pasa en cada etapa del proyecto.</p>
+    </div>
+
+    <div class="process__steps">
+      {steps.map((s, i) => (
+        <>
+          <div class="process__step" data-reveal>
+            <div class="process__step-num">{s.num}</div>
+            <div class="process__step-icon"><i data-lucide={s.icon}></i></div>
+            <h3>{s.title}</h3>
+            <p>{s.desc}</p>
+          </div>
+          {i < steps.length - 1 && (
+            <div class="process__conn" aria-hidden="true"><i data-lucide="chevron-right"></i></div>
+          )}
+        </>
+      ))}
+    </div>
+  </div>
+</section>

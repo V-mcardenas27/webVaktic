@@ -1,0 +1,95 @@
+---
+// src/components/Platform.astro
+const integrations = [
+  {icon:"message-circle", label:"WhatsApp"},
+  {icon:"mail",           label:"Gmail"},
+  {icon:"shopping-bag",   label:"Shopify"},
+  {icon:"credit-card",    label:"Mercado Pago"},
+  {icon:"calendar",       label:"Google Calendar"},
+  {icon:"table-2",        label:"Google Sheets"},
+  {icon:"slack",          label:"Slack"},
+  {icon:"instagram",      label:"Instagram"},
+  {icon:"database",       label:"Notion"},
+  {icon:"globe",          label:"WordPress"},
+];
+---
+
+<section class="platform" id="plataforma">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Plataforma</span>
+      <h2 class="section-head__title" data-reveal>Un sistema para gestionar<br />todo tu negocio.</h2>
+    </div>
+
+    <div class="platform__grid">
+
+      <!-- Workflow builder -->
+      <div class="panel panel--full" data-reveal>
+        <div class="panel__head">
+          <span class="panel__title">Constructor de Automatizaciones</span>
+          <span class="live-pill"><span class="live-dot"></span>En vivo</span>
+        </div>
+        <div class="wfbuilder">
+          <div class="wfbuilder__row">
+            <div class="wfn wfn--trigger"><i data-lucide="user-plus"></i><span>Nuevo lead</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--action"><i data-lucide="mail"></i><span>Email bienvenida</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--action"><i data-lucide="clock"></i><span>Esperar 2 días</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--action"><i data-lucide="message-square"></i><span>WhatsApp follow-up</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--done"><i data-lucide="check-circle-2"></i><span>Lead nutrido</span></div>
+          </div>
+          <div class="wfbuilder__row">
+            <div class="wfn wfn--trigger"><i data-lucide="shopping-cart"></i><span>Venta cerrada</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--action"><i data-lucide="file-text"></i><span>Generar factura</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--action"><i data-lucide="database"></i><span>Actualizar CRM</span></div>
+            <div class="wfn__arrow"></div>
+            <div class="wfn wfn--done"><i data-lucide="send"></i><span>Notificar equipo</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Performance bars -->
+      <div class="panel" data-reveal>
+        <div class="panel__head"><span class="panel__title">Rendimiento del Negocio</span></div>
+        <div class="perf">
+          <div class="perf__row"><span>Leads contactados</span><div class="perf__track"><div class="perf__bar" style="--w:92%;--c:#22d3ee"></div></div><span class="perf__val">92%</span></div>
+          <div class="perf__row"><span>Tareas automatizadas</span><div class="perf__track"><div class="perf__bar" style="--w:78%;--c:#4ade80"></div></div><span class="perf__val">78%</span></div>
+          <div class="perf__row"><span>Respuesta IA</span><div class="perf__track"><div class="perf__bar" style="--w:99%;--c:#8b5cf6"></div></div><span class="perf__val">99%</span></div>
+          <div class="perf__row"><span>Tiempo ahorrado</span><div class="perf__track"><div class="perf__bar" style="--w:65%;--c:#3b82f6"></div></div><span class="perf__val">65%</span></div>
+        </div>
+      </div>
+
+      <!-- Activity feed -->
+      <div class="panel" data-reveal>
+        <div class="panel__head"><span class="panel__title">Actividad Reciente</span></div>
+        <ul class="feed">
+          <li class="feed__item feed__item--ok"><i data-lucide="user-check"></i><div><b>Lead calificado automáticamente</b><span>hace 2 min</span></div></li>
+          <li class="feed__item feed__item--info"><i data-lucide="bot"></i><div><b>Chatbot respondió 5 consultas</b><span>hace 8 min</span></div></li>
+          <li class="feed__item feed__item--ok"><i data-lucide="file-check"></i><div><b>Contrato enviado digitalmente</b><span>hace 15 min</span></div></li>
+          <li class="feed__item feed__item--warn"><i data-lucide="bell"></i><div><b>Recordatorio enviado a cliente</b><span>hace 22 min</span></div></li>
+          <li class="feed__item feed__item--info"><i data-lucide="bar-chart-2"></i><div><b>Reporte semanal generado</b><span>hace 1h</span></div></li>
+        </ul>
+      </div>
+
+      <!-- Integrations -->
+      <div class="panel panel--full" data-reveal>
+        <div class="panel__head">
+          <span class="panel__title">Integraciones disponibles</span>
+          <span class="panel__sub">Nos conectamos con las herramientas que ya usás</span>
+        </div>
+        <div class="int-chips">
+          {integrations.map(i => (
+            <span class="int-chip"><i data-lucide={i.icon}></i>{i.label}</span>
+          ))}
+          <span class="int-chip int-chip--more">+100 más</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

@@ -1,0 +1,61 @@
+---
+// src/components/Problem.astro
+const bad = [
+  "Responder clientes manualmente todo el día",
+  'Hojas de Excel como único "sistema"',
+  "Perder leads por falta de seguimiento",
+  "Procesos repetidos y duplicados entre áreas",
+  "Sin visibilidad real de tu negocio",
+  "Pagar de más por soluciones genéricas",
+];
+const good = [
+  "IA atiende a tus clientes 24/7 sin descanso",
+  "Software a medida para tu operación real",
+  "CRM automático que no pierde ningún lead",
+  "Flujos conectados y 100% automatizados",
+  "Dashboard con métricas en tiempo real",
+  "Solución hecha exactamente para tu caso",
+];
+---
+
+<section class="problem" id="problema">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>El problema real</span>
+      <h2 class="section-head__title" data-reveal>Tu negocio pierde tiempo<br />y dinero sin darse cuenta.</h2>
+      <p class="section-head__sub" data-reveal>La mayoría de las PyMEs operan con procesos manuales, herramientas desconectadas y sin datos claros. Vaktic lo resuelve.</p>
+    </div>
+
+    <div class="problem__grid">
+      <div class="problem__card problem__card--bad" data-reveal>
+        <div class="problem__card-head">
+          <i data-lucide="x-circle"></i>
+          <span>Sin Vaktic</span>
+        </div>
+        <ul class="problem__list">
+          {bad.map(item => (
+            <li><i data-lucide="x"></i>{item}</li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="problem__vs">
+        <div class="problem__vs-line"></div>
+        <div class="problem__vs-icon"><i data-lucide="zap"></i></div>
+        <div class="problem__vs-line"></div>
+      </div>
+
+      <div class="problem__card problem__card--good" data-reveal>
+        <div class="problem__card-head">
+          <i data-lucide="check-circle-2"></i>
+          <span>Con Vaktic</span>
+        </div>
+        <ul class="problem__list">
+          {good.map(item => (
+            <li><i data-lucide="check"></i>{item}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,142 @@
+---
+// src/components/Features.astro
+
+interface Service {
+  svgId: string;
+  gradFrom: string;
+  gradTo: string;
+  strokeColor: string;
+  title: string;
+  desc: string;
+  tags: string[];
+  iconBody: string;
+}
+
+const services: Service[] = [
+  {
+    svgId: "fi1",
+    gradFrom: "#1e3a8a",
+    gradTo: "#0a1540",
+    strokeColor: "#22d3ee",
+    title: "Desarrollo Web y Apps",
+    desc: "Landing pages de alta conversión, aplicaciones web y móviles a medida, e-commerce y paneles de administración. Diseño profesional que convierte visitas en clientes.",
+    tags: ["React","Node.js","UI/UX","E-commerce"],
+    iconBody: `<rect x="12" y="14" width="32" height="22" rx="3" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+      <line x1="12" y1="21" x2="44" y2="21" stroke="rgba(34,211,238,0.3)" stroke-width="1"/>
+      <circle cx="16" cy="17.5" r="1.5" fill="#ff5f57"/><circle cx="20" cy="17.5" r="1.5" fill="#febc2e"/><circle cx="24" cy="17.5" r="1.5" fill="#28c840"/>
+      <path d="M17 29 L21 24 L25 27 L29 19 L33 24 L37 21" stroke="#4ade80" stroke-width="1.8" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="16" y="40" width="24" height="3" rx="1.5" fill="rgba(34,211,238,0.15)" stroke="#22d3ee" stroke-width="0.5"/>`,
+  },
+  {
+    svgId: "fi2",
+    gradFrom: "#064e3b",
+    gradTo: "#022c22",
+    strokeColor: "#4ade80",
+    title: "Inteligencia Artificial",
+    desc: "Chatbots con IA que atienden clientes, generan respuestas y califican leads. Análisis predictivo, procesamiento de documentos y automatización inteligente.",
+    tags: ["ChatGPT API","Chatbots","NLP","Predicción"],
+    iconBody: `<circle cx="28" cy="28" r="10" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <circle cx="28" cy="28" r="4" fill="#22d3ee"/>
+      <line x1="28" y1="14" x2="28" y2="18" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+      <line x1="28" y1="38" x2="28" y2="42" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+      <line x1="14" y1="28" x2="18" y2="28" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+      <line x1="38" y1="28" x2="42" y2="28" stroke="#4ade80" stroke-width="2" stroke-linecap="round"/>
+      <path d="M20 20 L24 24" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M32 32 L36 36" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M36 20 L32 24" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>
+      <path d="M20 36 L24 32" stroke="#22d3ee" stroke-width="1.5" stroke-linecap="round"/>`,
+  },
+  {
+    svgId: "fi3",
+    gradFrom: "#3b0764",
+    gradTo: "#1a0336",
+    strokeColor: "#8b5cf6",
+    title: "Automatización de Procesos",
+    desc: "Conectamos tus herramientas, eliminamos tareas repetitivas y creamos flujos automáticos. Gana más de 10 horas semanales para enfocarte en lo que importa.",
+    tags: ["Make","Zapier","APIs","Webhooks"],
+    iconBody: `<rect x="12" y="20" width="12" height="10" rx="2" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <rect x="32" y="20" width="12" height="10" rx="2" fill="none" stroke="#22d3ee" stroke-width="1.5"/>
+      <rect x="22" y="34" width="12" height="10" rx="2" fill="none" stroke="#4ade80" stroke-width="1.5"/>
+      <line x1="24" y1="30" x2="28" y2="34" stroke="rgba(139,92,246,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+      <line x1="32" y1="30" x2="28" y2="34" stroke="rgba(34,211,238,0.6)" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="18" cy="25" r="2" fill="#8b5cf6"/><circle cx="38" cy="25" r="2" fill="#22d3ee"/><circle cx="28" cy="39" r="2" fill="#4ade80"/>`,
+  },
+  {
+    svgId: "fi4",
+    gradFrom: "#1a2e6e",
+    gradTo: "#0d1840",
+    strokeColor: "#3b82f6",
+    title: "CRM y Gestión Comercial",
+    desc: "Sistemas CRM personalizados para inmobiliarias, clínicas, estudios y comercios. Seguimiento automático de leads, recordatorios y reportes en tiempo real.",
+    tags: ["CRM","Pipeline","Leads","Reportes"],
+    iconBody: `<rect x="14" y="16" width="28" height="24" rx="3" fill="none" stroke="#3b82f6" stroke-width="1.5"/>
+      <line x1="20" y1="24" x2="36" y2="24" stroke="rgba(59,130,246,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+      <line x1="20" y1="29" x2="36" y2="29" stroke="rgba(59,130,246,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+      <line x1="20" y1="34" x2="30" y2="34" stroke="rgba(59,130,246,0.5)" stroke-width="1" stroke-dasharray="3 2"/>
+      <circle cx="38" cy="38" r="6" fill="#0f1632" stroke="#22d3ee" stroke-width="1.5"/>
+      <path d="M36 38 L38 40 L41 36" stroke="#4ade80" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>`,
+  },
+  {
+    svgId: "fi5",
+    gradFrom: "#1a4a2e",
+    gradTo: "#0d2618",
+    strokeColor: "#4ade80",
+    title: "Analítica y Dashboards",
+    desc: "Paneles con métricas clave de tu negocio en tiempo real. Deja de tomar decisiones a ciegas: visualizá ventas, conversiones, cuellos de botella y oportunidades.",
+    tags: ["Data","KPIs","Tiempo real","BI"],
+    iconBody: `<path d="M17 36 L21 27 L25 31 L29 19 L33 26 L37 21" stroke="#4ade80" stroke-width="2.2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="17" cy="36" r="2.5" fill="#22d3ee"/><circle cx="37" cy="21" r="2.5" fill="#4ade80"/>
+      <rect x="14" y="40" width="28" height="2" rx="1" fill="rgba(74,222,128,0.2)"/>
+      <line x1="14" y1="27" x2="14" y2="40" stroke="rgba(34,211,238,0.2)" stroke-width="1"/>`,
+  },
+  {
+    svgId: "fi6",
+    gradFrom: "#2d1a5e",
+    gradTo: "#160d30",
+    strokeColor: "#8b5cf6",
+    title: "Consultoría Tecnológica",
+    desc: "¿No sabés por dónde empezar? Te ayudamos a diseñar tu roadmap tecnológico, elegir las herramientas correctas y evitar inversiones que no tienen retorno.",
+    tags: ["Estrategia","Roadmap","Tech Stack"],
+    iconBody: `<circle cx="28" cy="24" r="7" fill="none" stroke="#8b5cf6" stroke-width="1.5"/>
+      <circle cx="28" cy="24" r="3" fill="#8b5cf6"/>
+      <path d="M16 40 C16 34 20 32 28 32 C36 32 40 34 40 40" stroke="#8b5cf6" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <circle cx="16" cy="26" r="4" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>
+      <circle cx="40" cy="26" r="4" fill="none" stroke="rgba(139,92,246,0.4)" stroke-width="1"/>`,
+  },
+];
+---
+
+<section class="features" id="servicios">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Lo que hacemos</span>
+      <h2 class="section-head__title" data-reveal>Todo lo que necesita<br />tu empresa para escalar.</h2>
+      <p class="section-head__sub" data-reveal>No hacemos "de todo". Hacemos exactamente lo que tu negocio necesita para crecer, con tecnología real y resultados medibles.</p>
+    </div>
+
+    <div class="features__grid">
+      {services.map((s) => (
+        <article class="feat" data-reveal>
+          <div class="feat__icon-wrap">
+            <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+              <defs>
+                <radialGradient id={s.svgId} cx="50%" cy="50%" r="50%">
+                  <stop offset="0%" stop-color={s.gradFrom} stop-opacity=".9"/>
+                  <stop offset="100%" stop-color={s.gradTo} stop-opacity=".5"/>
+                </radialGradient>
+              </defs>
+              <circle cx="28" cy="28" r="28" fill={`url(#${s.svgId})`}/>
+              <Fragment set:html={s.iconBody} />
+            </svg>
+          </div>
+          <h3 class="feat__title">{s.title}</h3>
+          <p class="feat__desc">{s.desc}</p>
+          <div class="feat__tags">
+            {s.tags.map(t => <span>{t}</span>)}
+          </div>
+          <a href="#contacto" class="feat__link">Saber más <i data-lucide="arrow-right"></i></a>
+        </article>
+      ))}
+    </div>
+  </div>
+</section>

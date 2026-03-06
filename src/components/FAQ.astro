@@ -1,0 +1,46 @@
+---
+// src/components/FAQ.astro
+const faqs = [
+  {
+    q: "¿Cuánto cuesta un proyecto con Vaktic?",
+    a: "Cada proyecto es diferente. Una landing page arranca desde $500 USD, un sistema con automatizaciones puede ir de $1.500 a $8.000 USD y un producto SaaS desde $5.000 USD. Siempre te damos un presupuesto exacto antes de empezar.",
+  },
+  {
+    q: "¿Cuánto tarda en estar listo mi proyecto?",
+    a: "Depende del alcance. Landing page profesional: 5 a 7 días. MVP o sistema básico: 3 a 6 semanas. Sistema complejo con integraciones: 2 a 4 meses. Siempre te damos tiempos realistas, no promesas vacías.",
+  },
+  {
+    q: "¿Necesito saber de tecnología para trabajar con ustedes?",
+    a: "Para nada. Hablamos tu idioma. Te explicamos todo en términos de negocio, no de código. Tú nos cuentas el problema, nosotros lo resolvemos. Solo necesitás tener claro qué quieres lograr.",
+  },
+  {
+    q: "¿Qué pasa después de entregar el proyecto?",
+    a: "Ofrecemos planes de mantenimiento y soporte mensual. Capacitamos a tu equipo y siempre estamos disponibles para agregar funcionalidades o resolver algo. No desaparecemos después de entregar.",
+  },
+  {
+    q: "¿Trabajan con negocios pequeños o solo empresas grandes?",
+    a: "Trabajamos con negocios de todos los tamaños: desde el comercio de barrio que quiere su primera web hasta startups que necesitan escalar rápido. Tenemos soluciones para cada etapa y presupuesto.",
+  },
+];
+---
+
+<section class="faq" id="faq">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Preguntas frecuentes</span>
+      <h2 class="section-head__title" data-reveal>Todo lo que querés saber<br />antes de empezar.</h2>
+    </div>
+
+    <div class="faq__grid">
+      {faqs.map(item => (
+        <div class="faq__item" data-reveal>
+          <button class="faq__q" aria-expanded="false">
+            <span>{item.q}</span>
+            <i data-lucide="plus"></i>
+          </button>
+          <div class="faq__a"><p>{item.a}</p></div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

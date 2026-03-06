@@ -1,0 +1,45 @@
+---
+// src/components/Results.astro
+const stats = [
+  { num:"+40h",  lbl:"Semanales ahorradas por cliente con automatización" },
+  { num:"3x",    lbl:"Más conversión en negocios con landing optimizada" },
+  { num:"<2min", lbl:"Tiempo de respuesta con chatbot IA vs 24h manual" },
+  { num:"98%",   lbl:"De clientes repiten o refieren a Vaktic en su red" },
+];
+const testimonials = [
+  { stars:"★★★★★", text:"Vaktic nos automatizó el seguimiento de leads inmobiliarios. Pasamos de perder clientes a cerrar tres veces más en el mismo tiempo. El ROI fue inmediato.", initials:"MR", name:"Marcos R.", role:"Director, InmoRapid" },
+  { stars:"★★★★★", text:"Teníamos todo en Excel. Vaktic nos creó un sistema a medida en 3 semanas. Ahora todo está conectado y mi equipo trabaja el doble de rápido sin esfuerzo extra.", initials:"CL", name:"Carolina L.", role:"CEO, ClinicaPro" },
+  { stars:"★★★★★", text:"El chatbot con IA atiende a nuestros clientes a las 3 de la mañana. Nunca pierdo una consulta y el equipo se enfoca en cerrar, no en responder el mismo mensaje 50 veces.", initials:"JP", name:"Juan P.", role:"Fundador, TechStart" },
+];
+---
+
+<section class="results" id="resultados">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Resultados reales</span>
+      <h2 class="section-head__title" data-reveal>Números que hablan<br />por sí solos.</h2>
+    </div>
+
+    <div class="stats__grid">
+      {stats.map(s => (
+        <div class="stat-card" data-reveal>
+          <span class="stat-card__num">{s.num}</span>
+          <span class="stat-card__lbl">{s.lbl}</span>
+        </div>
+      ))}
+    </div>
+
+    <div class="testimonials" data-reveal>
+      {testimonials.map(t => (
+        <div class="testi">
+          <div class="testi__stars">{t.stars}</div>
+          <p class="testi__text">"{t.text}"</p>
+          <div class="testi__author">
+            <div class="testi__avatar">{t.initials}</div>
+            <div><strong>{t.name}</strong><span>{t.role}</span></div>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

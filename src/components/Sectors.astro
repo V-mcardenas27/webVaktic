@@ -1,0 +1,54 @@
+---
+// src/components/Sectors.astro
+const sectors = [
+  {
+    icon: "building-2",
+    title: "Inmobiliarias",
+    desc: "CRM de propiedades, automatización de seguimiento a compradores, portales con filtros inteligentes y gestión digital de contratos y documentos.",
+    items: ["Seguimiento automático de leads","Portal de propiedades personalizado","Alertas de precio y disponibilidad"],
+  },
+  {
+    icon: "store",
+    title: "Comercio Local",
+    desc: "E-commerce personalizado, gestión de inventario en tiempo real, sistema de fidelización y comunicación automática por WhatsApp e email.",
+    items: ["Tienda online lista en días","Stock actualizado automáticamente","Notificaciones a clientes fieles"],
+  },
+  {
+    icon: "rocket",
+    title: "Startups",
+    desc: "MVP rápido y escalable, arquitectura cloud desde cero, integraciones con APIs de pago, analítica de producto y automatización de onboarding.",
+    items: ["MVP en semanas, no meses","Arquitectura lista para escalar","Integraciones de pagos y cobros"],
+  },
+  {
+    icon: "stethoscope",
+    title: "Clínicas y Salud",
+    desc: "Sistema de turnos online, recordatorios automáticos por WhatsApp, historial digital y facturación automatizada para equipos de salud.",
+    items: ["Turnos 24/7 sin secretaria","Recordatorios por WhatsApp","Historias clínicas digitales"],
+  },
+];
+---
+
+<section class="sectors" id="sectores">
+  <div class="container">
+    <div class="section-head">
+      <span class="section-head__tag" data-reveal>Industrias</span>
+      <h2 class="section-head__title" data-reveal>Soluciones específicas<br />para tu industria.</h2>
+      <p class="section-head__sub" data-reveal>No ofrecemos soluciones genéricas. Entendemos tu sector y construimos exactamente lo que necesitás.</p>
+    </div>
+
+    <div class="sectors__grid">
+      {sectors.map(s => (
+        <div class="sector-card" data-reveal>
+          <div class="sector-card__icon"><i data-lucide={s.icon}></i></div>
+          <h3>{s.title}</h3>
+          <p>{s.desc}</p>
+          <ul class="sector-card__list">
+            {s.items.map(item => (
+              <li><i data-lucide="check"></i>{item}</li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

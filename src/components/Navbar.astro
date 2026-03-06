@@ -1,0 +1,48 @@
+---
+import Image from "astro/components/Image.astro";
+import Logo from "../assets/logo4.png";
+
+// src/components/Navbar.astro
+---
+
+<header class="navbar" id="navbar">
+  <div class="container navbar__inner">
+
+    <a href="#" class="brand">
+      <div class="brand__icon" aria-hidden="true">
+        <div class="layer layer--1"></div>
+        <div class="layer layer--2"></div>
+        <div class="layer layer--3"></div>
+      </div>
+      <span class="brand__name">vaktic</span>
+    </a>
+    <!-- <a href="">
+      <div>
+        <Image src={Logo} alt={'hola'}></Image>
+      </div>
+    </a> -->
+
+    <nav class="nav">
+      <a href="#servicios"  class="nav__link">Servicios</a>
+      <a href="#sectores"   class="nav__link">Soluciones</a>
+      <a href="#proceso"    class="nav__link">Proceso</a>
+      <a href="#resultados" class="nav__link">Resultados</a>
+      <a href="#faq"        class="nav__link">FAQ</a>
+    </nav>
+
+    <a href="#contacto" class="btn btn--primary">Hablar con un experto</a>
+
+    <button class="hamburger" id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+    <a href="#servicios"  class="mobile-menu__link">Servicios</a>
+    <a href="#sectores"   class="mobile-menu__link">Soluciones</a>
+    <a href="#proceso"    class="mobile-menu__link">Proceso</a>
+    <a href="#resultados" class="mobile-menu__link">Resultados</a>
+    <a href="#faq"        class="mobile-menu__link">FAQ</a>
+    <a href="#contacto" class="btn btn--primary mobile-menu__cta">Hablar con un experto</a>
+  </div>
+</header>

@@ -1,0 +1,47 @@
+---
+// src/components/LogosBar.astro
+const techs = [
+  { name: "Next.js",    icon: "▲" },
+  { name: "Angular",    icon: "⬡" },
+  { name: "Astro",      icon: "✦" },
+  { name: "Tailwind",   icon: "◈" },
+  { name: "Python",     icon: "⬢" },
+  { name: "PostgreSQL", icon: "🐘" },
+  { name: "MongoDB",    icon: "⬡" },
+  { name: "TypeScript", icon: "⬡" },
+];
+---
+
+<section class="logos-bar">
+  <div class="container">
+    <p class="logos-bar__label">Tecnologías que utilizamos</p>
+    <div class="logos-bar__track">
+      <div class="logos-bar__inner">
+        {techs.map(t => (
+          <span class="logo-item">
+            <span class="logo-item__icon">{t.icon}</span>
+            {t.name}
+          </span>
+        ))}
+        {techs.map(t => (
+          <span class="logo-item" aria-hidden="true">
+            <span class="logo-item__icon">{t.icon}</span>
+            {t.name}
+          </span>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .logo-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+  }
+  .logo-item__icon {
+    font-size: .85rem;
+    opacity: .7;
+  }
+</style>

@@ -1,0 +1,39 @@
+---
+// src/layouts/Layout.astro
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Vaktic — Tecnología que hace crecer tu negocio",
+  description = "Vaktic desarrolla software a medida, automatizaciones e inteligencia artificial para pymes, startups, inmobiliarias y comercios locales.",
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="icon" href="../assets/icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Lucide Icons (UMD build) -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" is:inline></script>
+  </head>
+  <body>
+    <canvas id="particles" aria-hidden="true"></canvas>
+    <slot />
+  </body>
+</html>
+
+<style is:global>
+  @import "../styles/global.css";
+</style>

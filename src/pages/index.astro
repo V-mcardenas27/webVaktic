@@ -1,0 +1,159 @@
+---
+// src/pages/index.astro
+import Layout   from "../layouts/Layout.astro";
+import Navbar   from "../components/Navbar.astro";
+import Hero     from "../components/Hero.astro";
+import LogosBar from "../components/LogosBar.astro";
+import Problem  from "../components/Problem.astro";
+import Features from "../components/Features.astro";
+import Sectors  from "../components/Sectors.astro";
+import Platform from "../components/Platform.astro";
+import Process  from "../components/Process.astro";
+import Results  from "../components/Results.astro";
+import FAQ      from "../components/FAQ.astro";
+//import CTA      from "../components/CTA.astro";
+import Footer   from "../components/Footer.astro";
+---
+
+<Layout>
+  <Navbar />
+  <Hero />
+  <LogosBar />
+  <Problem />
+  <Features />
+  <Sectors />
+  <Platform />
+  <Process />
+  <!-- <Results /> -->
+  <FAQ />
+  <!-- <CTA /> -->
+  <Footer />
+</Layout>
+
+<script>
+  // Wait until lucide is available (loaded via CDN in Layout head)
+  declare const lucide: { createIcons: () => void };
+
+  document.addEventListener("DOMContentLoaded", () => {
+    lucide.createIcons();
+
+    // ── Navbar scroll ──────────────────────────────────────────
+    const navbar = document.getElementById("navbar")!;
+    window.addEventListener(
+      "scroll",
+      () => navbar.classList.toggle("navbar--scrolled", window.scrollY > 60),
+      { passive: true }
+    );
+
+    // ── Mobile menu ────────────────────────────────────────────
+    const hamburger  = document.getElementById("hamburger")!;
+    const mobileMenu = document.getElementById("mobile-menu")!;
+
+    hamburger.addEventListener("click", () => {
+      const open = hamburger.getAttribute("aria-expanded") === "true";
+      hamburger.setAttribute("aria-expanded", String(!open));
+      mobileMenu.setAttribute("aria-hidden", String(open));
+      mobileMenu.classList.toggle("mobile-menu--open", !open);
+      hamburger.classList.toggle("hamburger--open", !open);
+    });
+
+    mobileMenu.querySelectorAll("a").forEach((a) =>
+      a.addEventListener("click", () => {
+        hamburger.setAttribute("aria-expanded", "false");
+        mobileMenu.setAttribute("aria-hidden", "true");
+        mobileMenu.classList.remove("mobile-menu--open");
+        hamburger.classList.remove("hamburger--open");
+      })
+    );
+
+    // ── Scroll reveal ──────────────────────────────────────────
+    const revObs = new IntersectionObserver(
+      (entries) =>
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add("revealed");
+            revObs.unobserve(e.target);
+          }
+        }),
+      { threshold: 0.1 }
+    );
+    document.querySelectorAll("[data-reveal]").forEach((el) => revObs.observe(el));
+
+    // ── FAQ accordion ──────────────────────────────────────────
+    document.querySelectorAll(".faq__q").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const item   = btn.parentElement!;
+        const answer = item.querySelector<HTMLElement>(".faq__a")!;
+        const isOpen = btn.getAttribute("aria-expanded") === "true";
+
+        document.querySelectorAll(".faq__item").forEach((i) => {
+          i.querySelector(".faq__q")!.setAttribute("aria-expanded", "false");
+          (i.querySelector<HTMLElement>(".faq__a")!).style.maxHeight = "";
+          i.classList.remove("faq__item--open");
+        });
+
+        if (!isOpen) {
+          btn.setAttribute("aria-expanded", "true");
+          answer.style.maxHeight = answer.scrollHeight + "px";
+          item.classList.add("faq__item--open");
+        }
+      });
+    });
+
+    // ── Particles canvas ───────────────────────────────────────
+    (function () {
+      const c   = document.getElementById("particles") as HTMLCanvasElement;
+      const ctx = c.getContext("2d")!;
+      let W: number, H: number;
+      type Pt = { x:number; y:number; vx:number; vy:number; r:number; a:number };
+      let pts: Pt[] = [];
+
+      function resize() { W = c.width = innerWidth; H = c.height = innerHeight; }
+
+      function build() {
+        pts = [];
+        const n = Math.floor((W * H) / 14000);
+        for (let i = 0; i < n; i++)
+          pts.push({
+            x: Math.random() * W, y: Math.random() * H,
+            vx: (Math.random() - 0.5) * 0.22,
+            vy: (Math.random() - 0.5) * 0.22,
+            r: Math.random() * 1.3 + 0.3,
+            a: Math.random() * 0.45 + 0.1,
+          });
+      }
+
+      function tick() {
+        ctx.clearRect(0, 0, W, H);
+        for (const p of pts) {
+          p.x += p.vx; p.y += p.vy;
+          if (p.x < 0) p.x = W; if (p.x > W) p.x = 0;
+          if (p.y < 0) p.y = H; if (p.y > H) p.y = 0;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(120,180,255,${p.a})`;
+          ctx.fill();
+        }
+        for (let i = 0; i < pts.length; i++)
+          for (let j = i + 1; j < pts.length; j++) {
+            const dx = pts[i].x - pts[j].x, dy = pts[i].y - pts[j].y;
+            const d  = Math.sqrt(dx * dx + dy * dy);
+            if (d < 120) {
+              ctx.beginPath();
+              ctx.moveTo(pts[i].x, pts[i].y);
+              ctx.lineTo(pts[j].x, pts[j].y);
+              ctx.strokeStyle = `rgba(100,160,255,${0.07 * (1 - d / 120)})`;
+              ctx.lineWidth = 0.7;
+              ctx.stroke();
+            }
+          }
+        requestAnimationFrame(tick);
+      }
+
+      resize();
+      build();
+      tick();
+      window.addEventListener("resize", () => { resize(); build(); }, { passive: true });
+    })();
+  });
+</script>
