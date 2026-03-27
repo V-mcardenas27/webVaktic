@@ -6,21 +6,27 @@
   <div class="cta__glow" aria-hidden="true"></div>
   <div class="container">
     <div class="cta__inner" data-reveal>
-      <span class="section-head__tag">Empezá hoy mismo</span>
+      <span class="section-head__tag">Empieza hoy mismo</span>
       <h2 class="cta__title">¿Listo para transformar<br />tu negocio con tecnología?</h2>
       <p class="cta__sub">Agendá una llamada de 30 minutos sin costo. Te mostramos exactamente cómo Vaktic puede resolver tus problemas y cuánto costaría hacerlo.</p>
 
-      <form class="cta__form" id="contact-form" name="contacto" method="POST">
-        <input type="text"  class="cta__input" id="name" name="name" placeholder="Tu nombre completo" aria-label="Nombre" required />
-        <input type="email" class="cta__input" id="email" name="email" placeholder="Tu email"           aria-label="Email" required />
-        <!-- <input type="tel" class="cta__input" name="phone" placeholder="Tu teléfono"        aria-label="Teléfono" required /> -->
-        <!-- <input type="text" class="cta__input" name="work" placeholder="Tu trabajo o rubro" aria-label="Trabajo" required /> -->
+      <form class="cta__form" id="contact-form" name="contacto">
+        <input type="text" class="cta__input" id="name" name="name" placeholder="Tu nombre completo" aria-label="Nombre" required />
+        <input type="email" class="cta__input" id="email" name="email" placeholder="Tu email" aria-label="Email" required />
+        <input type="tel" class="cta__input" name="phone" placeholder="Tu teléfono" aria-label="Teléfono" required />
+        <input type="text" class="cta__input" name="work" placeholder="Tu trabajo" aria-label="Trabajo" required />
         <textarea class="cta__input cta__textarea" id="message" name="message" placeholder="Tu mensaje..." aria-label="Mensaje" rows="4" required></textarea>
-        <button type="submit" class="btn btn--primary btn--lg cta__submit">
-          Agendar llamada gratuita
-          <i data-lucide="calendar"></i>
+        
+        <button type="submit" class="btn btn--primary btn--lg cta__submit" id="submit-btn">
+          <span class="btn-text">Enviar solicitud</span>
+          <span class="btn-loading" style="display: none;">
+            <i data-lucide="loader-2" class="animate-spin"></i> Enviando...
+          </span>
+          <i data-lucide="calendar" class="btn-icon"></i>
         </button>
       </form>
+
+      <div id="form-status" class="cta__status" style="display: none;"></div>
 
       <p class="cta__note">Sin compromiso &nbsp;·&nbsp; Respuesta en menos de 24h</p>
 
@@ -28,13 +34,119 @@
         <a href="https://wa.me/573217657670" class="cta__channel" target="_blank" rel="noopener">
           <i data-lucide="message-circle"></i>WhatsApp directo
         </a>
-        <!-- <a href="mailto:hola@vaktic.io" class="cta__channel">
-          <i data-lucide="mail"></i>hola@vaktic.io
-        </a> -->
-        <a href="https://www.instagram.com/vaktic.oficial/" class="cta__channel">
+        <a href="https://www.instagram.com/vaktic.oficial/" class="cta__channel" target="_blank" rel="noopener">
           <i data-lucide="instagram"></i>@vaktic.oficial
         </a>
       </div>
     </div>
   </div>
 </section>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+  const btnText = submitBtn.querySelector('.btn-text') as HTMLElement;
+  const btnLoading = submitBtn.querySelector('.btn-loading') as HTMLElement;
+  const btnIcon = submitBtn.querySelector('.btn-icon') as HTMLElement;
+  const statusDiv = document.getElementById('form-status') as HTMLElement;
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    // Mostrar estado de carga
+    btnText.style.display = 'none';
+    btnIcon.style.display = 'none';
+    btnLoading.style.display = 'flex';
+    submitBtn.disabled = true;
+    statusDiv.style.display = 'none';
+    statusDiv.className = 'cta__status';
+
+    try {
+      // Obtener datos del formulario
+      const formData = new FormData(form);
+      const data = Object.fromEntries(formData);
+      
+      console.log('Enviando datos:', data); // Debug
+      
+      const response = await fetch('/api/send-email', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json', // ← Importante
+        },
+        body: JSON.stringify(data), // ← Enviar como JSON
+      });
+
+      const result = await response.json();
+      console.log('Respuesta:', result); // Debug
+
+      if (response.ok) {
+        statusDiv.textContent = '✅ ¡Solicitud enviada! Te contactaremos en menos de 24h para agendar tu llamada.';
+        statusDiv.classList.add('success');
+        form.reset();
+      } else {
+        throw new Error(result.error || 'Error al enviar la solicitud');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      statusDiv.textContent = '❌ ' + (error instanceof Error ? error.message : 'Error al enviar. Intenta de nuevo o contáctanos por WhatsApp.');
+      statusDiv.classList.add('error');
+    } finally {
+      btnText.style.display = 'inline';
+      btnIcon.style.display = 'inline';
+      btnLoading.style.display = 'none';
+      submitBtn.disabled = false;
+      statusDiv.style.display = 'block';
+      statusDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  });
+</script>
+
+<style>
+  .cta__status {
+    margin-top: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+    font-weight: 500;
+    text-align: center;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .cta__status.success {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    border: 1px solid rgba(34, 197, 94, 0.3);
+  }
+
+  .cta__status.error {
+    background: rgba(239, 68, 68, 0.15);
+    color: #ef4444;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+  }
+
+  .btn-loading {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    justify-content: center;
+  }
+
+  .animate-spin {
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Asegurar que el botón deshabilitado se vea bien */
+  .cta__submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+  }
+</style>
