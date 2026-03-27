@@ -1,0 +1,40 @@
+---
+// src/components/CTA.astro
+---
+
+<section class="cta" id="contacto">
+  <div class="cta__glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="cta__inner" data-reveal>
+      <span class="section-head__tag">Empezá hoy mismo</span>
+      <h2 class="cta__title">¿Listo para transformar<br />tu negocio con tecnología?</h2>
+      <p class="cta__sub">Agendá una llamada de 30 minutos sin costo. Te mostramos exactamente cómo Vaktic puede resolver tus problemas y cuánto costaría hacerlo.</p>
+
+      <form class="cta__form" id="contact-form" name="contacto" method="POST">
+        <input type="text"  class="cta__input" id="name" name="name" placeholder="Tu nombre completo" aria-label="Nombre" required />
+        <input type="email" class="cta__input" id="email" name="email" placeholder="Tu email"           aria-label="Email" required />
+        <!-- <input type="tel" class="cta__input" name="phone" placeholder="Tu teléfono"        aria-label="Teléfono" required /> -->
+        <!-- <input type="text" class="cta__input" name="work" placeholder="Tu trabajo o rubro" aria-label="Trabajo" required /> -->
+        <textarea class="cta__input cta__textarea" id="message" name="message" placeholder="Tu mensaje..." aria-label="Mensaje" rows="4" required></textarea>
+        <button type="submit" class="btn btn--primary btn--lg cta__submit">
+          Agendar llamada gratuita
+          <i data-lucide="calendar"></i>
+        </button>
+      </form>
+
+      <p class="cta__note">Sin compromiso &nbsp;·&nbsp; Respuesta en menos de 24h</p>
+
+      <div class="cta__channels">
+        <a href="https://wa.me/573217657670" class="cta__channel" target="_blank" rel="noopener">
+          <i data-lucide="message-circle"></i>WhatsApp directo
+        </a>
+        <!-- <a href="mailto:hola@vaktic.io" class="cta__channel">
+          <i data-lucide="mail"></i>hola@vaktic.io
+        </a> -->
+        <a href="https://www.instagram.com/vaktic.oficial/" class="cta__channel">
+          <i data-lucide="instagram"></i>@vaktic.oficial
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
