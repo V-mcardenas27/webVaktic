@@ -1,4 +1,5 @@
 ---
+import Analytics from '@vercel/analytics/astro'
 // src/layouts/Layout.astro
 export interface Props {
   title?: string;
@@ -27,6 +28,7 @@ const {
     />
     <!-- Lucide Icons (UMD build) -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" is:inline></script>
+    <Analytics />
   </head>
   <body>
     <canvas id="particles" aria-hidden="true"></canvas>
