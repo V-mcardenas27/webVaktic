@@ -1,14 +1,14 @@
 ---
 // src/components/LogosBar.astro
 const techs = [
-  { name: "Next.js",    icon: "▲" },
-  { name: "Angular",    icon: "⬡" },
-  { name: "Astro",      icon: "✦" },
+  { name: "Next.js",    icon: "◈" },
+  { name: "Angular",    icon: "◈" },
+  { name: "Astro",      icon: "◈" },
   { name: "Tailwind",   icon: "◈" },
-  { name: "Python",     icon: "⬢" },
-  { name: "PostgreSQL", icon: "🐘" },
-  { name: "MongoDB",    icon: "⬡" },
-  { name: "TypeScript", icon: "⬡" },
+  { name: "Python",     icon: "◈" },
+  { name: "PostgreSQL", icon: "◈" },
+  { name: "MongoDB",    icon: "◈" },
+  { name: "TypeScript", icon: "◈" },
 ];
 ---
 
@@ -19,7 +19,7 @@ const techs = [
       <div class="logos-bar__inner">
         {techs.map(t => (
           <span class="logo-item">
-            <span class="logo-item__icon">{t.icon}</span>
+            <span class="logo-item__icon" set:html={t.icon} />
             {t.name}
           </span>
         ))}
