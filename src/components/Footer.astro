@@ -1,12 +1,47 @@
 ---
 import { msgWhatsApp } from "../pages/index.astro";
 
+const pdfUrlPyP = "/docs/Politica_de_Privacidad_de_Vaktic.pdf"
+const pdfUrlTyC = "/docs/Terminos_y_Condiciones_de_Uso_de_Vaktic.pdf"
+
 // src/components/Footer.astro
 const cols = [
-  { title:"Servicios", links:["Desarrollo Web","Inteligencia Artificial","Automatización","CRM a medida","Dashboards"] },
-  { title:"Soluciones", links:["Para Inmobiliarias","Para Comercios","Para Startups","Para Clínicas"] },
-  { title:"Empresa",  links:["Sobre Vaktic","Blog","Casos de éxito","Contacto"] },
-  { title:"Legal",    links:["Privacidad","Términos de uso","Cookies"] },
+  { 
+    title:"Servicios", 
+    links:[
+      { label:"Desarrollo Web", href:"#"},
+      { label:"Inteligencia Artificial", href:"#"},
+      { label:"Automatización", href:"#"},
+      { label:"CRM a medida", href:"#"},
+      { label:"Dashboards", href:"#"}
+    ] 
+  },
+  { 
+    title:"Soluciones", 
+    links:[
+      { label:"Para Inmobiliarias", href:"#"},
+      { label:"Para Comercios", href:"#"},
+      { label:"Para Startups", href:"#"},
+      { label:"Para Clínicas", href:"#"}
+    ] 
+  },
+  { 
+    title:"Empresa",  
+    links:[
+      { label:"Sobre Vaktic", href:"#"},
+      { label:"Blog", href:"#"},
+      { label:"Casos de éxito", href:"#"},
+      { label:"Contacto", href:"#"}
+    ] 
+  },
+  { 
+    title:"Legal",    
+    links:[
+      { label:"Privacidad", href: pdfUrlPyP, external: true },
+      { label:"Términos de uso", href: pdfUrlTyC, external: true },
+      { label:"Cookies", href:"#"}
+    ] 
+  },
 ];
 ---
 
@@ -33,7 +68,15 @@ const cols = [
       {cols.map(col => (
         <div class="footer__col">
           <span class="footer__col-title">{col.title}</span>
-          {col.links.map(link => <a href="#">{link}</a>)}
+          {col.links.map(link => (
+            <a 
+              href={link.href} 
+              target={link.external ? "_blank" : "_self"} 
+              rel={link.external ? "noopener noreferrer" : ""}
+            >
+              {link.label}
+            </a>
+          ))}
         </div>
       ))}
     </nav>
